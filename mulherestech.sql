@@ -1,4 +1,4 @@
--- Apagar o banco de dados caso ele exista:
+-- Apaga o banco de dados caso ele exista:
 -- Isso é útil em "tempo de desenvolvimento".
 -- Quando o aplicativo estiver pronto, isso NUNCA deve ser usado.
 DROP DATABASE IF EXISTS mulherestech;
@@ -9,7 +9,7 @@ DROP DATABASE IF EXISTS mulherestech;
 CREATE DATABASE mulherestech CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 -- Seleciona banco de dados:
--- Todas as ações seguites se referem a este banco de dados, até que outro
+-- Todas as ações seguintes se referem a este banco de dados, até que outro
 -- "USE nomedodb" seja encontrado.
 USE mulherestech;
 
@@ -18,7 +18,7 @@ CREATE TABLE users (
 
     -- O campo uID (PK → Primary Key) é usado para identificar cada registro 
     -- como único. Ele não pode ter valores repetidos.
-    -- A opção AUTO_INCREMENT força que o prório MySQL incremente o uID.
+    -- A opção AUTO_INCREMENT força que o próprio MySQL incremente o uID.
     uid INT PRIMARY KEY AUTO_INCREMENT,
 
     -- A data do cadastro está no fomrato TIMESTAMP (AAAA-MM-DD HH:II:SS).
@@ -41,6 +41,7 @@ CREATE TABLE users (
 
     -- O tipo ENUM(lista) só aceita um dos valores de "lista".
     -- DEFAULT especifica um valor padrão para o campo, durante a inserção.
+    -- Neste caso, DEFAULT deve ter um avalor presente na lista de ENUM.
     type ENUM('admin', 'author', 'moderator', 'user') DEFAULT 'user',
 
     -- Formato do tipo DATETIME → AAAA-MM-DD HH:II:SS.
