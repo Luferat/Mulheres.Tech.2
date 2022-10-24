@@ -15,14 +15,12 @@ $database = 'mulherestech';
 // Conexão com o MySQL e banco de dados:
 $conn = new mysqli($hostname, $username, $password, $database);
 
-// TESTE → Lendo dados do db:
-$sql = "SELECT aid, title, resume, thumbnail FROM articles";
+// Seta transações com MySQL/MariaDB para UTF-8:
+$conn->query("SET NAMES 'utf8'");
+$conn->query('SET character_set_connection=utf8');
+$conn->query('SET character_set_client=utf8');
+$conn->query('SET character_set_results=utf8');
 
-// Executa a query:
-$res = $conn->query($sql);
-
-// Loop para receber cada registro:
-while ($art = $res->fetch_assoc()) {
-
-    print_r ($art);
-}
+// Seta dias da semana e meses do MySQL/MariaDB para "português do Brasil":
+$conn->query('SET GLOBAL lc_time_names = pt_BR');
+$conn->query('SET lc_time_names = pt_BR');
