@@ -24,3 +24,6 @@ $conn->query('SET character_set_results=utf8');
 // Seta dias da semana e meses do MySQL/MariaDB para "português do Brasil":
 $conn->query('SET GLOBAL lc_time_names = pt_BR');
 $conn->query('SET lc_time_names = pt_BR');
+
+// Insere as funções do aplicativo:
+require('functions.php');
