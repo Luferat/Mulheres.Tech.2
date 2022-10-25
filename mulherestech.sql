@@ -46,7 +46,7 @@ CREATE TABLE users (
 
     -- Formato do tipo DATETIME → AAAA-MM-DD HH:II:SS.
     last_login DATETIME,
-    ustatus ENUM('online', 'offline', 'deleted') DEFAULT 'online'
+    ustatus ENUM('online', 'offline', 'deleted', 'banned') DEFAULT 'online'
 );
 
 -- Cadastra alguns usuários para testes:
@@ -71,7 +71,7 @@ INSERT INTO users (
 
     -- A senha será criptografada pela função SHA1 antes de ser inserida.
     SHA1('senha123'),
-
+ 
     -- Não vamos inserir a imagem diretamente no banco de dados.
     -- Buscamos a imagem pela URL dela.
     'https://randomuser.me/api/portraits/men/14.jpg',
