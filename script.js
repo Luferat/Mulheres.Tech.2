@@ -28,7 +28,7 @@ function runApp() {
    * jQuery → Quando houver click em um elemento <a>, execute o aplicativo 
    * "routerLink":
    **/
-  // $(document).on('click', 'a', routerLink);
+  $('#btnMenu').click(toggleMenu);
 
   // Prepara o menu dropdown para exibição correta conforme a largura da tela:
   resize();
@@ -58,130 +58,6 @@ function runApp() {
     // COOKIE → Ocultar a mensagem de cookie:
     $('#acCookies').hide();
   });
-
-}
-
-/**
- * routerLink() → Aplicativo que processa cliques nos elementos <a>:
- */
-function routerLink() {
-
-  // Quando clica em qualquer link, oculta o menu dropdown:
-  hideMenu();
-
-  /**
-   * jQuery → Recebe o atributo (attr()) "href" do link clicado e armazena 
-   * em 'href'. A função "$(this)" faz referência ao elemento que foi clicado
-   * e disparou este processo.
-   **/
-  var href = $(this).attr('href');
-
-  // Se o link clicado é o botão do menu (href="menu")...
-  if (href == 'menu') {
-
-    // Chama a função que controla a exibição do menu dropdown:
-    toggleMenu();
-
-    // Sai de "routerLink()" sem fazer mais nada (false):
-    return false;
-  }
-
-  /**
-   * Se faz referência a link externo que começa com "http://" OU "https://",
-   * OU faz referência a uma âncora que começa com "#"...
-   * 
-   * OBS: O código "||" (pipe pipe) significa o "OU" (OR) lógico em JavaScript.
-   * Para OU (||) se apenas uma das subexpressões é verdadeira (true) toda a 
-   * expressão será verdadeira.
-   * 
-   * Referências: 
-   *    https://youtu.be/mp3g9IQ651g
-   *    https://www.w3schools.com/jsref/jsref_substring.asp
-   *    https://www.w3schools.com/js/js_if_else.asp
-   **/
-  if (
-    // Se clicou em um link que começa com "http://", OU
-    href.substr(0, 7) == 'http://' ||
-
-    // Se clicou em um link que começa com "https://", OU
-    href.substr(0, 8) == 'https://' ||
-
-    // Se clicou em uma âncora que começa com "#"...
-    href.substr(0, 1) == '#'
-  ) {
-
-    /**
-     * Encerra "routerLink()" retornando "true" (verdade) para que o HTML abra 
-     * o link normalmente:
-     **/
-    return true;
-  }
-
-  /**
-   * Se clicou em um link interno (rota para uma página), executa o programa 
-   * "loadPage()" que carrega a página correta:
-   **/
-  loadPage(href);
-
-  /**
-   * Encerra "routerLink()" retornando "false" (falso) para que a ação do HTML
-   * ao clicar no link seja bloqueada:
-   **/
-  return false;
-}
-
-/**
- * loadPage() → Aplicativo que processa os arquivos HTML, CSS e JavaScript da 
- * "rota" solicitada e abre estes no site:
- */
-function loadPage(href) {
-
-  // Cria objeto contendo todas as partes da página (HTML, CSS e JS):
-  var page = {
-    "html": `/pages/${href}/index.html`,
-    "css": `/pages/${href}/style.css`,
-    "js": `/pages/${href}/script.js`
-  }
-
-  // jQuery → Carrega o documento HTML da página na variável "content":
-  $.get(page.html, function (content) {
-
-    // jQuery → Carrega o CSS da página, no <head> da "index.html":
-    $('#pageCSS').attr('href', page.css);
-
-    // jQuery → Exibe HTML na página no elemento <main>:
-    $('#content').html(content);
-
-    // jQuery → Carrega e executa o JavaScript da página:
-    $.getScript(page.js);
-
-  });
-
-  // Atualiza URL da página:
-  // window.history.pushState({}, "", href);
-
-}
-
-/**
- * setTitle() → Aplicativo que troca o <title> do documento conforme cada 
- * página é acessada. Para isso, inclua a chamada "setTitle('Titulo')" em cada
- * arquivo "script.js" de cada página dentro da pasta "pages".
- */
-function setTitle(title = '') {
-
-  // Se não definiu um valor para title...
-  if (title == '') {
-
-    // jQuery → Título padrão da página será nomeDoSite + sloganDoSite:
-    $('title').html("Mulheres.Tech .:. Programadoras do Futuro");
-
-    // Se definiu "title"...
-  } else {
-
-    // jQuery → Título da página será nomeDoSite + nomeDaPágina:
-    $('title').html("Mulheres.Tech .:. " + title);
-
-  }
 
 }
 
@@ -236,6 +112,8 @@ function toggleMenu() {
     // Chama a função que mostra o menu:
     showMenu();
   }
+
+  return false;
 }
 
 /**

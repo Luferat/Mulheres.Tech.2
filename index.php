@@ -1,3 +1,26 @@
+<?php
+
+// Importa as configurações do site:
+require('includes/config.php');
+
+// Lista de redes sociais no rodapé:
+$fsocial = '<nav><h4>Redes sociais:</h4>';
+for ($i = 0; $i < count($s); $i++) :
+
+  $fsocial .= <<<HTML
+
+<a href="{$s[$i]['link']}" target="_blank" title="Acesse nosso {$s[$i]['name']}">
+  <i class="fa-brands {$s[$i]['icon']} fa-fw"></i>
+  <span>{$s[$i]['name']}</span>
+</a>
+
+HTML;
+
+endfor;
+
+$fsocial .= '</nav>';
+
+?>
 <!DOCTYPE html>
 
 <!--
@@ -32,7 +55,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
 
   <!-- Título do documento -->
-  <title>Mulheres.Tech</title>
+  <title><?php echo $c['sitename'] ?></title>
 
 </head>
 
@@ -55,30 +78,20 @@
     <!-- Cabeçalho da página -->
     <header>
       <!-- Logotipo clicável usando Font Awesome -->
-      <a href="home" title="Página inicial">
-        <i class="fa-solid fa-laptop-code fa-fw"></i>
+      <a href="/" title="Página inicial">
+        <?php echo $c['sitelogo'] ?>
       </a>
 
       <!-- Título e slogan do site / página -->
       <h1>
-        Mulheres.Tech
-        <small>Programadoras do Futuro</small>
+        <?php echo $c['sitename'] ?>
+        <small><?php echo $c['siteslogan'] ?></small>
       </h1>
     </header>
 
-    <!--
-      Menu principal:
-        / → Raiz do aplicativo → Será carregada a "index.html";
-        /contacts → Página com formulário e links de contato;
-        /about → Sobre o site, autor e privacidade;
-        /profile → Gestão do usuário (login, logou, perfil, ...).
-    -->
     <nav>
-      <!-- Link do item de menu para a página especificada -->
-      <a href="home" title="Página inicial">
-        <!-- Ícone do ítem usando Font Awesome -->
+      <a href="/" title="Página inicial">
         <i class="fa-solid fa-house-chimney fa-fw"></i>
-        <!-- Etiqueta (label) do item -->
         <span>Início</span>
       </a>
 
@@ -87,17 +100,17 @@
         Tem a mesma estrutura do anterior. 
       -->
 
-      <a href="contacts" title="Faça contato" class="dropable">
+      <a href="/?contacts" title="Faça contato" class="dropable">
         <i class="fa-solid fa-comments fa-fw"></i>
         <span>Contatos</span>
       </a>
 
-      <a href="about" title="Sobre a gente" class="dropable">
+      <a href="/?about" title="Sobre a gente" class="dropable">
         <i class="fa-solid fa-circle-info fa-fw"></i>
         <span>Sobre</span>
       </a>
 
-      <a href="profile" title="Perfil de usuário" class="dropable">
+      <a href="/?profile" title="Perfil de usuário" class="dropable">
         <i class="fa-regular fa-user fa-fw"></i>
         <span>Perfil</span>
       </a>
@@ -107,7 +120,7 @@
         Este botão só aparece em resoluções menores (mobile frist).
         Observe que 'href="menu"', para que seja identificado pelo JavaScript.
       -->
-      <a href="menu" id="btnMenu" title="Abre/fecha menu">
+      <a href="/?menu" id="btnMenu" title="Abre/fecha menu">
         <i class="fa-solid fa-ellipsis-vertical fa-fw"></i>
       </a>
     </nav>
@@ -115,16 +128,15 @@
     <!-- Menu dropdown: Adicione itens ao menu aqui. -->
     <div id="dropable">
       <nav>
-        <a href="profile" title="Perfil de usuário"><i class="fa-regular fa-user fa-fw"></i><span>Perfil</span></a>
-        <!-- Separador -->
+        <a href="/?profile" title="Perfil de usuário"><i class="fa-regular fa-user fa-fw"></i><span>Perfil</span></a>
         <hr>
-        <a href="search" title="Procurar no site"><i class="fa-solid fa-magnifying-glass fa-fw"></i><span>Procurar</span></a>
+        <a href="/?search" title="Procurar no site"><i class="fa-solid fa-magnifying-glass fa-fw"></i><span>Procurar</span></a>
         <hr>
-        <a href="contacts" title="Faça contato"><i class="fa-solid fa-comments fa-fw"></i><span>Contatos</span></a>
-        <a href="about" title="Sobre a gente..."><i class="fa-solid fa-circle-info fa-fw"></i><span>Sobre</span></a>
-        <a href="site" title="Sobre o site..."><i class="fa-solid fa-globe fa-fw"></i><span>Sobre o site</span></a>
-        <a href="team" title="Quem somos..."><i class="fa-solid fa-users fa-fw"></i><span>Quem somos</span></a>
-        <a href="policies" title="Políticas de Privacidade"><i class="fa-solid fa-user-lock fa-fw"></i><span>Sua privacidade</span></a>
+        <a href="/?contacts" title="Faça contato"><i class="fa-solid fa-comments fa-fw"></i><span>Contatos</span></a>
+        <a href="/?about" title="Sobre a gente..."><i class="fa-solid fa-circle-info fa-fw"></i><span>Sobre</span></a>
+        <a href="/?site" title="Sobre o site..."><i class="fa-solid fa-globe fa-fw"></i><span>Sobre o site</span></a>
+        <a href="/?team" title="Quem somos..."><i class="fa-solid fa-users fa-fw"></i><span>Quem somos</span></a>
+        <a href="/?policies" title="Políticas de Privacidade"><i class="fa-solid fa-user-lock fa-fw"></i><span>Sua privacidade</span></a>
       </nav>
     </div>
 
@@ -139,12 +151,12 @@
       <!-- Bloco superior do rodapé -->
       <div id="fsup">
         <!-- Link para a raiz do aplicativo (página inicial) -->
-        <a href="home" title="Página inicial">
+        <a href="/" title="Página inicial">
           <i class="fa-solid fa-house-chimney fa-fw"></i>
         </a>
 
         <!-- Licença do aplicativo -->
-        <div id="copy">&copy; 2022 Mulheres.Tech</div>
+        <div id="copy">&copy; 2022 <?php echo $c['sitename'] ?></div>
 
         <!-- Link para o topo desta página -->
         <a href="#top" title="Topo da página">
@@ -155,34 +167,20 @@
       <!-- Bloco inferior do rodapé -->
       <div id="finf">
         <!-- Menu de redes sociais -->
-        <nav>
-          <h4>Redes sociais:</h4>
-          <a href="https://facebook.com/Mulheres.Tech" target="_blank" title="Acesse nosso Facebook">
-            <i class="fa-brands fa-square-facebook fa-fw"></i>
-            <span>Facebook</span>
-          </a>
-          <a href="https://youtube.com/Mulheres.Tech" target="_blank" title="Nosso canal no Youtube">
-            <i class="fa-brands fa-square-youtube fa-fw"></i>
-            <span>Youtube</span>
-          </a>
-          <a href="https://github.com/Mulheres.Tech" target="_blank" title="Nossa página no GitHub">
-            <i class="fa-brands fa-square-github fa-fw"></i>
-            <span>GitHub</span>
-          </a>
-        </nav>
+        <?php echo $fsocial ?>
 
         <!-- Menu de links internos -->
         <nav>
           <h4>Acesso rápido:</h4>
-          <a href="contacts">
+          <a href="/?contacts">
             <i class="fa-solid fa-comments fa-fw"></i>
             <span>Contatos</span>
           </a>
-          <a href="about">
+          <a href="/?about">
             <i class="fa-solid fa-circle-info fa-fw"></i>
             <span>Sobre</span>
           </a>
-          <a href="policies">
+          <a href="/?policies">
             <i class="fa-solid fa-user-lock fa-fw"></i>
             <span>Sua privacidade</span>
           </a>
@@ -215,12 +213,7 @@
 
   </div>
 
-  <!--
-    Importa a biblioteca JavaScript "jQuery" via CDN
-    Para saber mais:
-      • https://jquery.com/
-      • https://www.w3schools.com/jquery/
-  -->
+  <!-- Importa a biblioteca JavaScript "jQuery" via CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
   <!-- Inclui o JavaScript do aplicativo, que depende de "jQuery" -->

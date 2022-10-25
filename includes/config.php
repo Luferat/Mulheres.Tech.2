@@ -1,16 +1,42 @@
 <?php
 
-// Configura PHP para UTF-8:
-header('Content-Type: text/html; charset=utf-8');
+// Variável de configuração do aplicativo:
+$c = array(
+    'sitename' => 'Mulheres.Tech',
+    'siteslogan' => 'Programadoras do Futuro',
+    'sitelogo' => '<i class="fa-solid fa-laptop-code fa-fw"></i>'
+);
 
-// Define o fuso horário para "horário de Brasília":
-date_default_timezone_set('America/Sao_Paulo');
+// Variável de redes sociais:
+$s = array(
+    array(
+        'name' => 'Facebook',
+        'link' => 'https://facebook.com/Mulheres.Tech',
+        'icon' => 'fa-square-facebook'
+    ),
+    array(
+        'name' => 'Youtube',
+        'link' => 'https://youtube.com/Mulheres.Tech',
+        'icon' => 'fa-square-youtube'
+    ),
+    array(
+        'name' => 'GitHub',
+        'link' => 'https://github.com/Mulheres.Tech',
+        'icon' => 'fa-square-github'
+    )
+);
 
 // Dados de conexão com MySQL no XAMPP:
 $hostname = 'localhost';
 $username = 'root';
 $password = '';
 $database = 'mulherestech';
+
+// Configura PHP para UTF-8:
+header('Content-Type: text/html; charset=utf-8');
+
+// Define o fuso horário para "horário de Brasília":
+date_default_timezone_set('America/Sao_Paulo');
 
 // Conexão com o MySQL e banco de dados:
 $conn = new mysqli($hostname, $username, $password, $database);
