@@ -1,0 +1,16 @@
+.authordate {
+    font-size: small;
+    text-align: right;
+    background-color: rgb(251, 226, 251);
+    padding: .4rem;
+    border-radius: .4rem;
+    display: flex;
+    flex-direction: column;
+}
+
+@media(min-width: 512px) {
+    .authordate {
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+}

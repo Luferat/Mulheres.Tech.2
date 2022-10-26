@@ -1,10 +1,92 @@
 <?php
 
-// Importa as configurações do site:
+/**
+ * Importa as configurações do site:
+ * Referências:
+ *  • https://www.w3schools.com/php/php_includes.asp
+ **/
 require('includes/config.php');
 
-// Lista de redes sociais no rodapé:
+/**
+ * Obtém e filtra o nome da página da URL:
+ * Referências:
+ *  • https://www.w3schools.com/jsref/jsref_trim_string.asp
+ *  • https://www.php.net/manual/en/function.urldecode.php
+ *  • https://www.w3schools.com/php/func_string_htmlentities.asp
+ *  • https://www.w3schools.com/php/php_superglobals.asp
+ *  • https://www.w3schools.com/php/php_superglobals_server.asp
+ **/
+$route = trim(urldecode($_SERVER['QUERY_STRING']));
+
+// Se não solicitou uma rota, usa a rota da página inicial:
+if ($route == '') $route = 'home';
+
+// Remove coisas depois da "/" caso exista:
+$route = explode('/', $route)[0];
+
+/**
+ * Monta todos os caminhos dos arquivos da página em uma coleção:
+ * Referências:
+ *  • https://www.w3schools.com/php/php_arrays.asp
+ *  • https://www.w3schools.com/php/func_array.asp
+ **/
+$page = array(
+  'php' => "pages/{$route}/index.php",
+  'css' => "pages/{$route}/index.css",
+  'js' => "pages/{$route}/index.js",
+);
+
+/**
+ * Verifica se a rota solicitada para o arquivo PHP existe:
+ * Referências:
+ *  • https://www.w3schools.com/php/func_filesystem_file_exists.asp
+ **/
+if (!file_exists($page['php'])) :
+
+  // Se não existe, carrega, explicitamente, a rota da página 404:
+  $page = array(
+    'php' => "pages/404/index.php",
+    'css' => "pages/404/index.css",
+    'js' => "pages/404/index.js",
+  );
+endif;
+
+// Carrega a página PHP solicitada pela rota:
+require($page['php']);
+
+// Carrega o CSS da página solicitada, somente se ele existe:
+if (file_exists($page['css']))
+  // Gera a tag que carrega o CSS da página:
+  $page_css = "<link rel=\"stylesheet\" href=\"/{$page['css']}\">";
+
+// Carrega o JavaScript da página solicitada, somente se ele existe:
+if (file_exists($page['js']))
+  // Gera a tag que carrega o JavaScript da página:
+  $page_js = "<script src=\"/{$page['js']}\"></script>";
+
+/**
+ * Formata o título da página:
+ * OBS: O título de cada página é definido no arquivo "index.php" da própria
+ * página, na variável "$page_title".
+ **/ 
+if ($page_title == '')
+  // Se não definiu um título, usa o slogan do site para compor o título:
+  $title = "{$c['sitename']} {$c['titlesep']} {$c['siteslogan']}";
+else
+  // Se definiu um título, usa o título da página na composição do título:
+  $title = "{$c['sitename']} {$c['titlesep']} {$page_title}";
+
+// Inicializa a lista de redes sociais do rodapé:
 $fsocial = '<nav><h4>Redes sociais:</h4>';
+
+/**
+ * Loop para obter cada rede social:
+ * OBS: a lista de redes sociais está definida em "includes/config.php", na 
+ * coleção "$s[]".
+ * Referências:
+ *  • https://www.w3schools.com/js/js_loop_for.asp
+ *  • https://www.w3schools.com/php/func_array_count.asp
+ **/ 
 for ($i = 0; $i < count($s); $i++) :
 
   // Adiciona cada rede social na lista:
@@ -28,11 +110,14 @@ $fsocial .= '</nav>';
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" href="/img/favicon.jpg">
+  <link rel="icon" href="<?php echo $c['sitefavicon'] ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/style.css" />
-  <link rel="stylesheet" href="" id="pageCSS">
-  <title><?php echo $c['sitename'] ?></title>
+  <?php
+  // Carrega as folhas de estilo da página solicitada:
+  echo $page_css;
+  ?>
+  <title><?php echo $title ?></title>
 </head>
 
 <body>
@@ -85,7 +170,12 @@ $fsocial .= '</nav>';
       </nav>
     </div>
 
-    <main id="content"></main>
+    <main id="content">
+      <?php
+      // Exibe o conteúdo dinâmico da página:
+      echo $page_content;
+      ?>
+    </main>
 
     <footer>
 
@@ -139,6 +229,10 @@ $fsocial .= '</nav>';
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="/script.js"></script>
+  <?php
+  // Carrega o javaScript da página solicitada:
+  echo $page_js;
+  ?>
 </body>
 
 </html>
