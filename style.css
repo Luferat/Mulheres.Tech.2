@@ -1,34 +1,17 @@
 /**
  * Folha de estilos do aplicativo.
  *
- * OBS1: Essas são as folhas de estilo (CSS) do tema (template) do aplicativo. 
+ * Essas são as folhas de estilo (CSS) do tema (template) do aplicativo. 
  * Posteriormente, cada página (conteúdo) terá sua própria folha de estilos,
  * assim, somente as folhas de estilos necessárias serão carregadas.
- *
- * OBS2: Essas folhas de estilo estão definidas para "mobile first" (320px),
- * usando media queries (@media) para definir o layout em telas maiores.
- *
- * Para saber mais:
- *  • https://www.w3schools.com/css/
- *  • https://www.w3schools.com/cssref/css_selectors.asp
- *  • https://www.w3schools.com/cssref/
- */
+  **/
 
 /**
- * Importa folhas de estilo para "reset" do CSS "Normalize" via CDN
- * Para saber mais:
- *   • https://necolas.github.io/normalize.css/
- *   • https://pt.wikipedia.org/wiki/Rede_de_fornecimento_de_conte%C3%BAdo
- */
+ * Importa folhas de estilo externas via CDN:
+ **/
 @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
-
-/**
-  * Importa a fonte "Lato" do Google Fonts.
-  *  
-  * A bilbioteca Google Fonts fornece milhares de fontes de uso livre para 
-  * aplicativos. Para saber mais, acesse: https://fonts.google.com/    
-  */
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css");
 
 /***********************
  * Reset geral do tema *
@@ -36,30 +19,20 @@
 
 /* Todos os elementos */
 * {
-  /* Tamanho do elemento é definido pelas bordas */
   box-sizing: border-box;
-
-  /* Remove serrilhado ao redor de imagens e links selecionados */
   outline: none;
 }
 
 /* Elementos "root" (raiz) */
 html,
 body {
-  /* Tamanho e posicionamento */
   position: relative;
   margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
-
-  /* Fonte padrão do site, usando a fonte "Lato" do Google Fonts */
   font-family: "Lato", sans-serif;
-
-  /* Tamanho da fonte padrão → 1rem = 16px */
   font-size: 16px;
-
-  /* Cor da fonte padrão */
   color: rgb(55, 0, 55);
 }
 
@@ -87,31 +60,22 @@ body {
 
 /* Elemento #wrap */
 #wrap {
-  /* Posicionamento e responsividade */
   position: relative;
   width: 100%;
   height: 100%;
-
-  /* Estabelece limites de largura */
   min-width: 280px;
   max-width: 1024px;
-
-  /* Centraliza elemento na viewport do navegador */
   margin: auto;
 }
 
 /*************
  * Cabeçalho *
  *************/
-
 #wrap>header {
-  /* Formato */
   border-radius: 0.5rem;
   margin: 0.5rem;
   display: flex;
   align-items: center;
-
-  /* Fundo */
   background-attachment: scroll;
   background-color: purple;
   background-image: url("/img/bg03.jpg");
@@ -156,8 +120,6 @@ body {
   margin-top: 0;
   display: flex;
   align-items: center;
-
-  /* Alinha itens do menu à esquerda */
   justify-content: flex-end;
 }
 
@@ -170,8 +132,6 @@ body {
   text-align: center;
   color: rgb(255, 240, 255);
   text-decoration: none;
-
-  /* Efeito de transição */
   transition: 0.25s;
 }
 
@@ -455,7 +415,7 @@ body {
   display: none;
   position: fixed;
   bottom: 0;
-  width: 100%;  
+  width: 100%;
 }
 
 .cookieBody {
