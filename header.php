@@ -14,14 +14,14 @@
         <header>
             <h1>Mulheres.Tech.2.1</h1>
         </header>
-
-        <hr>
+        
         <nav>
+            <hr>
             <a href="/">Início</a>
             <a href="/contacts.php">Contatos</a>
             <a href="/about.php">Sobre</a>
             <a href="/policies.php">Privacidade</a>
-        </nav>
-        <hr>
+            <hr>
+        </nav>        
 
         <main>
