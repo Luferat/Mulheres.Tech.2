@@ -1,7 +1,7 @@
 </main>
 
-<hr>
 <footer>
+    <hr>
     &copy; 2022 Mulheres.Tech
 </footer>
 
