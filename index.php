@@ -16,7 +16,7 @@ require('includes/config.php');
  *  • https://www.w3schools.com/php/php_superglobals.asp
  *  • https://www.w3schools.com/php/php_superglobals_server.asp
  **/
-$route = trim(urldecode($_SERVER['QUERY_STRING']));
+$route = trim(htmlentities($_SERVER['QUERY_STRING']));
 
 // Se não solicitou uma rota, usa a rota da página inicial:
 if ($route == '') $route = 'home';

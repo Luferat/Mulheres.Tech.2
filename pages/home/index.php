@@ -9,11 +9,18 @@ $artlist = '';
 // Query para obter a lista de artigos publicados:
 $sql = <<<SQL
 
+-- Somente os campos necessários:
 SELECT aid, title, thumbnail, resume
 FROM articles
 WHERE 
+
+    -- Somente os artigos que estão "online":
     astatus = 'online'
+
+    -- Não obtém os agendados para o futuro:
     AND adate <= NOW()
+
+-- Obtém os mais recentes primeiro:    
 ORDER BY adate DESC;
 
 SQL;
@@ -46,7 +53,13 @@ HTML;
 
 endif;
 
-// Definir o conteúdo desta página:
+/**
+ * Define o conteúdo desta página:
+ * OBS1: a variável "$page_content" terá seu conteúdo exibido dentro da tag 
+ * "<main>" da index.php (página inicial) do site.
+ * OBS2: a variável "$artlist" contém os artigos, gerados à partir do loop
+ * acima.
+ **/
 $page_content = <<<HTML
 
 <article>
