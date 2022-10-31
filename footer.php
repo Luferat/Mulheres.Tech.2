@@ -1,10 +1,11 @@
 </main>
 
-        <footer>
-            &copy; 2022 Mulheres.Tech
-        </footer>
+<hr>
+<footer>
+    &copy; 2022 Mulheres.Tech
+</footer>
 
-    </div>
+</div>
 
 </body>
 

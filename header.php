@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mulheres.Tech.2.1</title>
+    <title>Mulheres.Tech.2.1 - <?php echo $page_title ?></title>
 </head>
 
 <body>
@@ -20,7 +20,8 @@
             <a href="/">Início</a>
             <a href="/contacts.php">Contatos</a>
             <a href="/about.php">Sobre</a>
+            <a href="/policies.php">Privacidade</a>
         </nav>
         <hr>
-        
+
         <main>
