@@ -18,9 +18,8 @@
         <nav>
             <hr>
             <a href="/">Início</a>
-            <a href="/contacts.php">Contatos</a>
-            <a href="/about.php">Sobre</a>
-            <a href="/policies.php">Privacidade</a>
+            <a href="/contacts">Contatos</a>
+            <a href="/about">Sobre</a>
             <hr>
         </nav>        
 

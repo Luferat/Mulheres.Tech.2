@@ -1,7 +1,7 @@
 <?php
 
 // Importa o arquivo de configuração:
-require('config.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/inc/_config.php');
 
 /***********************************************
  * Todo o código PHP desta página começa aqui! *
@@ -15,7 +15,7 @@ $page_title = 'Página modelo';
  ************************************************/
 
 // Importa cabeçalho do tema:
-require('header.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/inc/_header.php');
 
 /********************************************************
  * Todo o conteúdo VISUAL da página (HTML) começa aqui! *
@@ -32,5 +32,5 @@ require('header.php');
  *********************************************************/
 
 // Importa rodapé do tema:
-require('footer.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/inc/_footer.php');
 ?>

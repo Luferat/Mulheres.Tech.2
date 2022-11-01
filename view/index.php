@@ -1,21 +1,21 @@
 <?php
 
 // Importa o arquivo de configuração:
-require('config.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/inc/_config.php');
 
 /***********************************************
  * Todo o código PHP desta página começa aqui! *
  ***********************************************/
 
-// 1) Obtém o ID da URL:
+// Obtém o ID da URL:
 $id = intval($_SERVER['QUERY_STRING']);
 
-// 2) Verifica se o ID é igual a 0
+// Verifica se o ID é igual a 0
 if ($id == 0)
-    // 2.1) Se for, carrega página "404.php".
-    header('Location: 404.php');
+    // Se for, carrega página 404:
+    header('Location: /404/');
 
-// 3) Escreve o SQL que obtém o artigo:
+// Escreve o SQL que obtém o artigo:
 $sql = <<<SQL
 
 SELECT *,
@@ -28,15 +28,15 @@ WHERE aid = '{$id}'
 SQL;
 $res = $conn->query($sql);
 
-// 4) Verifica se o artigo existe:
+// Verifica se o artigo existe:
 if ($res->num_rows != 1)
-    // 4.1) Se não existe, carrega página "404.php".
-    header('Location: 404.php');
+    // Se não existe, carrega página 404.
+    header('Location: /404/');
 
-// 5) Extrai os dados do artigo:
+// Extrai os dados do artigo:
 $art = $res->fetch_assoc();
 
-// 6) Formata o artigo para exibição:
+// Formata o artigo para exibição:
 $page_content .= <<<HTML
 
 <h3>{$art['title']}</h3>
@@ -45,14 +45,15 @@ $page_content .= <<<HTML
 
 HTML;
 
-// 7) Define o título da página como título do artigo:
+// Define o título da página como título do artigo:
+$page_title = $art['title'];
 
 /************************************************
  * Todo o código PHP desta página termina aqui! *
  ************************************************/
 
 // Importa cabeçalho do tema:
-require('header.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/inc/_header.php');
 
 /********************************************************
  * Todo o conteúdo VISUAL da página (HTML) começa aqui! *
@@ -67,5 +68,5 @@ require('header.php');
  *********************************************************/
 
 // Importa rodapé do tema:
-require('footer.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/inc/_footer.php');
 ?>
