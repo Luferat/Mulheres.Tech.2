@@ -11,7 +11,8 @@ $c = array(
     'siteslogan' => 'Programadoras do Futuro',
     'sitelogo' => '<i class="fa-solid fa-laptop-code fa-fw"></i>',
     'sitefavicon' => '/img/favicon.jpg',
-    'titlesep' => '&middot;&middot;&middot;'
+    'titlesep' => '&middot;&middot;&middot;',
+    'siteemail' => 'admin@mulherestech.com'
 );
 
 /**

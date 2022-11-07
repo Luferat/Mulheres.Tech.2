@@ -38,7 +38,7 @@ else :
     while ($art = $res->fetch_assoc()) :
 
         $artlist .= <<<HTML
-
+ 
 <div class="artbox" data-link="/?view/{$art['aid']}">
     <div class="img" style="background-image: url('{$art['thumbnail']}');"></div>
     <div>

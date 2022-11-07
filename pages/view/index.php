@@ -36,7 +36,7 @@ $art = $res->fetch_assoc();
 $page_title = $art['title'];
 
 // Monta a view do autor e data de publicação:
-$authordate = "<span>Por {$art['name']}</span><span>em {$art['adatebr']}</span>";
+$authordate = "<span>Por {$art['name']}</span><span>&nbsp;em {$art['adatebr']}</span>";
 
 // Definir o conteúdo desta página:
 $page_content = <<<HTML

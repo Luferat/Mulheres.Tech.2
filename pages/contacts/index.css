@@ -1,1 +1,130 @@
-h2 { color: red; }
+/**
+ * Folha de estilos do formulário de contatos.
+ **/
+
+#contacts {
+    width: 100%;
+    max-width: 475px;
+    margin: auto;
+}
+
+#contacts label {
+    display: block;
+    margin: 0 0 .25rem .25rem;
+}
+
+#contacts input, #contacts textarea, #contacts button {
+    width: 100%;
+    border-radius: .3rem;
+    font-family: inherit;
+    font-size: 1rem;
+    padding: .4rem .5rem;
+}
+
+#contacts textarea {
+    height: 6rem;
+    resize: vertical;
+}
+
+#contacts button {
+    width: auto;
+    background: linear-gradient(rgb(232, 1, 232), rgb(74, 0, 74));
+    color: white;
+    border: none;
+    box-shadow: 5px 5px 10px 0px rgba(138, 138, 138, 1);
+    cursor: pointer;
+}
+
+#contacts button:hover {
+    background: linear-gradient(rgb(255, 89, 255), rgb(139, 0, 139));
+}
+
+/* Estilo para campos válidos */
+#contacts input:valid, #contacts textarea:valid {
+    background-color: rgb(232, 240, 254);
+    border: 1px solid green;
+    border-bottom: 3px solid green;
+}
+
+
+/* Estilo para campos inválidos */
+#contacts input:invalid, #contacts textarea:invalid {
+    background-color: rgb(255, 207, 207);
+    border: 1px solid red;
+    border-bottom: 3px solid red;
+}
+
+/* Estilo para o botão, quando o formulário for inválido */
+#contacts:invalid button {
+    background: linear-gradient(rgb(170, 170, 170), rgb(79, 79, 79));
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.social {
+    text-align: center;
+}
+
+.social a {
+    display: inline-block;
+    padding: .5rem;
+}
+
+.social i[class~=fa-facebook] {
+    color: #4267B2;
+}
+
+.social i[class~=fa-youtube] {
+    color: #FF0000;
+}
+
+.social i[class~=fa-github] {
+    color: rgb(61, 61, 61);
+}
+
+.social i[class~=fa-whatsapp] {
+    color: #128C7E;
+}
+
+.social i[class~=fa-phone] {
+    color: purple;
+}
+
+.about {
+    display: table;
+    margin: auto;
+    margin-bottom: 1rem;
+}
+
+.about a {
+    display: flex;
+    padding: .4rem 0;
+}
+
+.about a:hover {
+    text-decoration: none;
+}
+
+.about i {
+    font-size: 1.3rem;
+}
+
+.about a span {
+    display: inline-block;
+    margin-left: .4rem;
+}
+
+.form-error {
+    display: table;
+    margin: auto;
+    background: #ffffcc;
+    color: darkred;
+    border-radius: .5rem;
+    padding: 0 1rem;
+    font-size: .8rem;
+}
+
+.feedback{
+    display: table;
+    margin: auto;
+}
