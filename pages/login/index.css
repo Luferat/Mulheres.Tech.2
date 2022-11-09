@@ -1,0 +1,75 @@
+#formLogin {
+    display: table;
+    margin: auto;
+}
+
+#formLogin label:not(label[for=logged]) {
+    display: block;
+    padding: 0 0 .25rem .25rem;
+}
+
+#formLogin input:not(input[type=checkbox]), #formLogin button {
+    width: 100%;
+    border-radius: .3rem;
+    font-family: inherit;
+    font-size: 1rem;
+    padding: .4rem .5rem;
+}
+
+#formLogin button {
+    width: auto;
+    background: linear-gradient(rgb(232, 1, 232), rgb(74, 0, 74));
+    color: white;
+    border: none;
+    box-shadow: 5px 5px 10px 0px rgba(138, 138, 138, 1);
+    cursor: pointer;
+}
+
+#formLogin button:hover {
+    background: linear-gradient(rgb(255, 89, 255), rgb(139, 0, 139));
+}
+
+/* Estilo para campos válidos */
+#formLogin input:valid {
+    background-color: rgb(232, 240, 254);
+    border: 1px solid green;
+    border-bottom: 3px solid green;
+}
+
+/* Estilo para campos inválidos */
+#formLogin input:invalid {
+    background-color: rgb(255, 207, 207);
+    border: 1px solid red;
+    border-bottom: 3px solid red;
+}
+
+/* Estilo para o botão, quando o formulário for inválido */
+#formLogin:invalid button {
+    background: linear-gradient(rgb(170, 170, 170), rgb(79, 79, 79));
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.logged, .logged label {
+    padding-left: .25rem;
+}
+
+#formLogin hr {
+    border: none;
+    border-top: 1px dotted purple;
+} 
+
+.loginlinks {
+    display: flex;
+    justify-content: space-around;
+}
+
+.form-error {
+    display: table;
+    margin: auto;
+    background: #ffffcc;
+    color: darkred;
+    border-radius: .5rem;
+    padding: 0 1rem;
+    font-size: .8rem;
+}

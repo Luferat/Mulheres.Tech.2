@@ -30,8 +30,10 @@ $res = $conn->query($sql);
 
 // Verifica se existem artigos:
 if ($res->num_rows == 0) :
+
     // Se não existem avisa ao front-end:
     $artlist .= '<p>Oooops! Nenhum artigo por aqui...</p>';
+
 else :
 
     // Se existem, loop que obtém cada artigo:

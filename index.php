@@ -147,10 +147,12 @@ $fsocial .= '</nav>';
         <i class="fa-solid fa-circle-info fa-fw"></i>
         <span>Sobre</span>
       </a>
-      <a href="/?profile" title="Perfil de usuário" class="dropable">
-        <i class="fa-regular fa-user fa-fw"></i>
-        <span>Perfil</span>
+
+      <a href="/?login" title="Perfil de usuário" class="dropable">
+      <i class="fa-solid fa-right-to-bracket fa-fw"></i>
+        <span>Login</span>
       </a>
+
       <a href="/?menu" id="btnMenu" title="Abre/fecha menu">
         <i class="fa-solid fa-ellipsis-vertical fa-fw"></i>
       </a>

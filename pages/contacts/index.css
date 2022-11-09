@@ -46,7 +46,6 @@
     border-bottom: 3px solid green;
 }
 
-
 /* Estilo para campos inválidos */
 #contacts input:invalid, #contacts textarea:invalid {
     background-color: rgb(255, 207, 207);
@@ -90,6 +89,10 @@
     color: purple;
 }
 
+.social i[class~=fa-envelope] {
+    color: orange;
+}
+
 .about {
     display: table;
     margin: auto;
@@ -124,7 +127,7 @@
     font-size: .8rem;
 }
 
-.feedback{
+.feedback {
     display: table;
     margin: auto;
 }

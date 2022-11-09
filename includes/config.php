@@ -51,6 +51,26 @@ $password = '';
 $database = 'mulherestech';
 
 /**
+ * Define a Regex de validação de senha:
+ * 
+ * IMPORTANTE!
+ * Conforme nossas "políticas de segurança", a senha do usuário deve seguir as
+ * seguintes regras:
+ *
+ *     • Entre 7 e 25 caracteres;
+ *     • Pelo menos uma letra minúscula;
+ *     • Pelo menos uma letra maiúscula;
+ *     • Pelo menos um número.
+ *
+ * A REGEX abaixo especifica essas regras:
+ *
+ *     • HTML5 → pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{7,25}$"
+ *     • JavaScript → \^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{7,25}$\
+ *     • PHP → "/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{7,25}$/"
+ **/
+$rgpass = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{7,25}$";
+
+/**
  * Configura PHP para UTF-8:
  * Referências:
  *  • https://www.w3schools.com/php/func_network_header.asp

@@ -46,7 +46,7 @@ CREATE TABLE users (
 
     -- Formato do tipo DATETIME → AAAA-MM-DD HH:II:SS.
     last_login DATETIME,
-    ustatus ENUM('online', 'offline', 'deleted', 'banned') DEFAULT 'online'
+    ustatus ENUM('online', 'deleted', 'banned') DEFAULT 'online'
 );
 
 -- Cadastra alguns usuários para testes:
@@ -68,9 +68,9 @@ INSERT INTO users (
     '1',
     'Joca da Silva',
     'joca@silva.com',
-
+ 
     -- A senha será criptografada pela função SHA1 antes de ser inserida.
-    SHA1('senha123'),
+    SHA1('Senha123'),
  
     -- Não vamos inserir a imagem diretamente no banco de dados.
     -- Buscamos a imagem pela URL dela.
@@ -92,7 +92,7 @@ INSERT INTO users (
     '2',
     'Marineuza Siriliano',
     'mari@neuza.com',
-    SHA1('senha123'),
+    SHA1('Senha123'),
     'https://randomuser.me/api/portraits/women/72.jpg',
     '2002-03-21',
     'Escritora, montadora, organizadora e professora.',
@@ -101,7 +101,7 @@ INSERT INTO users (
     '3',
     'Hemengarda Sirigarda',
     'hemen@garda.com',
-    SHA1('senha123'),
+    SHA1('Senha123'),
     'https://randomuser.me/api/portraits/women/20.jpg',
     '2004-08-19',
     'Sensitiva, intuitiva, normativa e omissiva.',
@@ -110,7 +110,7 @@ INSERT INTO users (
     '4',
     'Setembrino Trocatapas',
     'set@brino.com',
-    SHA1('senha123'),
+    SHA1('Senha123'),
     'https://randomuser.me/api/portraits/men/20.jpg',
     '1979-02-03',
     'Um dos maiores inimigos do Pernalonga.',
