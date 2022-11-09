@@ -78,3 +78,14 @@
     display: table;
     margin: auto;
 }
+
+.password {
+    display: flex;
+}
+
+#pwToggle {
+    background: none !important;
+    color: purple !important;
+    border: none !important;
+    box-shadow: none !important;
+}

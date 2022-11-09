@@ -1,19 +1,18 @@
 <?php
 
-// Se usuário já está logado:
+// Se usuário já está logado...
 if (isset($_COOKIE[$c['ucookie']]))
 
-    // Envia o site para o perfil do usuário:
+    // Envia o usuário para o perfil dele:
     header('Location: /?profile');
 
 // Define o título desta página:
 $page_title = "Login / Entrar";
 
-// Define as variáveis do aplicativo:
+// Inicializa as variáveis do aplicativo:
 $logged = false;
 $error = $form_error = $feedback = '';
-$email = 'joca@silva.com';
-$password = 'Senha123';
+$email = $password = '';
 
 // Se o formulário foi enviado...
 if (isset($_POST['send'])) :
@@ -147,7 +146,10 @@ $form_login = <<<HTML
 
     <p>
         <label for="password">Senha:</label>
-        <input type="password" name="password" id="password" autocomplete="off" value="{$password}" required pattern="{$rgpass}">
+        <span class="password">
+            <input type="password" name="password" id="password" autocomplete="off" value="{$password}" required pattern="{$rgpass}">
+            <button type="button" id="pwToggle"><i class="fa-solid fa-eye fa-fw"></i></button>
+        </span>
     </p>
 
     <p class="logged">
