@@ -12,7 +12,9 @@ $c = array(
     'sitelogo' => '<i class="fa-solid fa-laptop-code fa-fw"></i>',
     'sitefavicon' => '/img/favicon.jpg',
     'titlesep' => '&middot;&middot;&middot;',
-    'siteemail' => 'admin@mulherestech.com'
+    'siteemail' => 'admin@mulherestech.com',
+    'ucookie' => 'mtuserdata',
+    'ucookiedays' => 365
 );
 
 /**
@@ -43,6 +45,9 @@ $s = array(
  * Todas as variáveis com valor "vazio".
  **/
 $page_title = $page_content = $page_css = $page_js = '';
+
+// Inicializa arrays de uso geral:
+$user = array();
 
 // Dados de conexão com MySQL no XAMPP:
 $hostname = 'localhost';

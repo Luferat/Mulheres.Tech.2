@@ -57,7 +57,7 @@
 #formLogin hr {
     border: none;
     border-top: 1px dotted purple;
-} 
+}
 
 .loginlinks {
     display: flex;
@@ -72,4 +72,9 @@
     border-radius: .5rem;
     padding: 0 1rem;
     font-size: .8rem;
+}
+
+.feedback {
+    display: table;
+    margin: auto;
 }

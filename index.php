@@ -7,6 +7,12 @@
  **/
 require('includes/config.php');
 
+// Se usuário já está logado...
+if (isset($_COOKIE[$c['ucookie']]))
+
+  // Extrai os dados do usuário:
+  $user = json_decode($_COOKIE[$c['ucookie']], true);
+
 /**
  * Obtém e filtra o nome da página da URL:
  * Referências:
@@ -68,7 +74,7 @@ if (file_exists($page['js']))
  * Formata o título da página:
  * OBS: O título de cada página é definido no arquivo "index.php" da própria
  * página, na variável "$page_title".
- **/ 
+ **/
 if ($page_title == '')
   // Se não definiu um título, usa o slogan do site para compor o título:
   $title = "{$c['sitename']} {$c['titlesep']} {$c['siteslogan']}";
@@ -77,21 +83,20 @@ else
   $title = "{$c['sitename']} {$c['titlesep']} {$page_title}";
 
 // Inicializa a lista de redes sociais do rodapé:
-$fsocial = '<nav><h4>Redes sociais:</h4>';
+$fsocial = '<nav>
+  <h4>Redes sociais:</h4>';
 
 /**
  * Loop para obter cada rede social:
- * OBS: a lista de redes sociais está definida em "includes/config.php", na 
+ * OBS: a lista de redes sociais está definida em "includes/config.php", na
  * coleção "$s[]".
  * Referências:
- *  • https://www.w3schools.com/js/js_loop_for.asp
- *  • https://www.w3schools.com/php/func_array_count.asp
- **/ 
-for ($i = 0; $i < count($s); $i++) :
-
-  // Adiciona cada rede social na lista:
+ * • https://www.w3schools.com/js/js_loop_for.asp
+ * • https://www.w3schools.com/php/func_array_count.asp
+ **/
+for ($i = 0; $i < count($s); $i++) : // Adiciona cada rede social na lista: 
   $fsocial .= <<<HTML
-
+    
 <a href="{$s[$i]['link']}" target="_blank" title="Acesse nosso {$s[$i]['name']}">
   <i class="fa-brands {$s[$i]['icon']} fa-fw"></i>
   <span>{$s[$i]['name']}</span>
@@ -102,7 +107,8 @@ HTML;
 endfor;
 
 // Conclui a lista de redes sociais do rodapé:
-$fsocial .= '</nav>';
+$fsocial .= '
+</nav>';
 
 ?>
 <!DOCTYPE html>
@@ -148,10 +154,35 @@ $fsocial .= '</nav>';
         <span>Sobre</span>
       </a>
 
-      <a href="/?login" title="Perfil de usuário" class="dropable">
-      <i class="fa-solid fa-right-to-bracket fa-fw"></i>
-        <span>Login</span>
-      </a>
+      <?php
+
+      // Se o usuário está logado...
+      if (isset($user['uid'])) :
+
+      ?>
+
+        <a href="/?profile" title="Perfil de <?php echo $user['name'] ?>" class="dropable profile">
+          <img src="<?php echo $user['photo'] ?>" alt="Perfil de <?php echo $user['name'] ?>">
+          <span>Perfil</span>
+        </a>
+
+      <?php
+
+      // Se não está logado...
+      else :
+
+      ?>
+
+        <a href="/?login" title="Login de usuário" class="dropable">
+          <i class="fa-solid fa-right-to-bracket fa-fw"></i>
+          <span>Login</span>
+        </a>
+
+      <?php
+
+      endif; // if(isset($user['uid'])):
+
+      ?>
 
       <a href="/?menu" id="btnMenu" title="Abre/fecha menu">
         <i class="fa-solid fa-ellipsis-vertical fa-fw"></i>
@@ -160,7 +191,17 @@ $fsocial .= '</nav>';
 
     <div id="dropable">
       <nav>
-        <a href="/?profile" title="Perfil de usuário"><i class="fa-regular fa-user fa-fw"></i><span>Perfil</span></a>
+        <?php if (isset($user['uid'])) : ?>
+          <a href="/?profile" title="Perfil de <?php echo $user['name'] ?>" class="profile">
+            <img src="<?php echo $user['photo'] ?>" alt="Perfil de <?php echo $user['name'] ?>">
+            <span>Perfil</span>
+          </a>
+        <?php else : ?>
+          <a href="/?login" title="Login de usuário">
+            <i class="fa-solid fa-right-to-bracket fa-fw"></i>
+            <span>Login</span>
+          </a>
+        <?php endif; ?>
         <hr>
         <a href="/?search" title="Procurar no site"><i class="fa-solid fa-magnifying-glass fa-fw"></i><span>Procurar</span></a>
         <hr>

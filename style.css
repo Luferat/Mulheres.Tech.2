@@ -459,3 +459,13 @@ body {
     margin-left: 1rem;
   }
 }
+
+.profile {
+  margin: 0;
+}
+
+.profile img {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}

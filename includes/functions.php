@@ -20,3 +20,16 @@ function br_to_sys($data_br)
     if(count($dt_parts) == 2) $new_date .= " {$dt_parts[1]}";
     return $new_date;
 }
+
+/**
+ * Calcula a idade com base na data de nascimento, levando em consideração 
+ * o ano, mês e dia do nascimento:
+ * OBS: a data deve estar no formado 'Y-m-d'.
+ **/
+function agecalc($birth)
+{
+    $date = new DateTime($birth);   // Converte a data de nascimento para segundos:
+    $now = new DateTime();          // Obtém a data atual em segundos:
+    $interval = $now->diff($date);  // Calcula a diferença entre as datas:
+    return $interval->y;            // Extrai o tempo em anos dos segundos e retorna:
+}
